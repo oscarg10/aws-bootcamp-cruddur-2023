@@ -21,4 +21,6 @@ VEry similar to the billing alert, I created a $10 budget that will notify me if
 ![](images/2023-02-12-14-54-03.png)
 ![](images/2023-02-12-14-54-59.png)
 
-4. 
+4. Watched Ashish Rajan Cloud Security Best Practices video 
+
+![](images/2023-02-13-22-06-50.png)
