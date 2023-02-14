@@ -3,13 +3,15 @@
 ## Homework for week 0 : 
 
 1. Set a Billing alarm - Dollar amount. 
-    
 
-![](images/2023-02-12-14-43-10.png)
+Added billing alert using Cloudwatch. Set up the alarm so it would send me an email in case the 80% of my budget was reached.   
+
+![](images/2023-02-13-21-02-15.png)
 
 
 2. Create an AWS Budget - Credits with an 80% threshold alert. 
 
+VEry similar to the billing alert, I created a $10 budget that will notify me if I go past 75% of it. 
 ![](images/2023-02-12-14-50-27.png)
 ![](images/2023-02-12-14-51-01.png)
 
