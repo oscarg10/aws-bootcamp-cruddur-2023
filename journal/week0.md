@@ -81,6 +81,15 @@ Very similar to the billing alert, I created a $10 budget that will notify me if
 
 ![](images/2023-02-13-22-06-50.png)
 
+5. Installed AWS CLI, used Cloudshell and created an Admin User. 
+
+![](images/2023-02-14-22-06-45.png)
+
+![](images/2023-02-14-22-10-03.png)
+
+![](images/2023-02-14-22-13-01.png)
+
+
 ## AWS Security Best Practices Video
 
 As part of the homework exercise, I wanted to summarize the most important points that Ashish covered during his lecture. First of all, the video was really easy to follow and understand. That said, here is what I got out of it. 
