@@ -54,28 +54,28 @@ Logical Architecture
 
 
 
-## Homework for week 0 : 
+## Required Homework for week 0 : 
 
 1. Set a Billing alarm - Dollar amount. 
 
 Added billing alert using Cloudwatch. Set up the alarm so it would send me an email in case the 80% of my budget was reached.   
 
-![](images/2023-02-13-21-02-15.png)
+![Billing Alert](images/2023-02-13-21-02-15.png)
 
 
 2. Create an AWS Budget - Credits with an 80% threshold alert. 
 
-Very similar to the billing alert, I created a $10 budget that will notify me if I go past 75% of it. 
+Very similar to the billing alert, I created a $10 budget that will notify me if I go past 80% of it. 
 
 
-![](images/2023-02-12-14-50-27.png)
-![](images/2023-02-12-14-51-01.png)
+![Budget Screenshot 1](images/2023-02-12-14-50-27.png)
+![Budget Screenshot 2](images/2023-02-12-14-51-01.png)
 
-3. Activating MFA in a new user create. Also, added policies to the new admin account
+3. Activating MFA in a new user created. Also, added policies to the new admin account
 
-![](images/2023-02-12-14-53-08.png)
-![](images/2023-02-12-14-54-03.png)
-![](images/2023-02-12-14-54-59.png)
+![Proof of MFA](images/2023-02-12-14-53-08.png)
+![Admin User](images/2023-02-12-14-54-03.png)
+![Policies Added to User](images/2023-02-12-14-54-59.png)
 
 4. Watched Ashish Rajan Cloud Security Best Practices video 
 
@@ -83,24 +83,28 @@ Very similar to the billing alert, I created a $10 budget that will notify me if
 
 5. Installed AWS CLI, used Cloudshell and created an Admin User. 
 
-![](images/2023-02-14-22-06-45.png)
+I had previously installed AWS CLI using the Windows commands. As evidence, I pasted a screenshot of my AWS credentials and also a screenshot of the current AWS CLI version installed on my local machine. 
 
-![](images/2023-02-14-22-10-03.png)
+![aws cli version](images/2023-02-14-22-06-45.png)
 
-![](images/2023-02-14-22-13-01.png)
+![aws-sts](images/2023-02-15-21-43-36.png)
+
+![Cloudshell](images/2023-02-14-22-13-01.png)
+
+![Admin User](images/2023-02-14-22-10-03.png)
 
 6. Logical Diagram in Lucid
 
 Here is the link of the diagram along with a screenshot below: [Logical Diagram](https://lucid.app/lucidchart/a95a435a-8f70-40df-89c3-283f63c96fea/edit?viewport_loc=-336%2C-252%2C2994%2C1423%2C0_0&invitationId=inv_60bf124b-1548-4d62-bc7e-4d63f98e3344)
 
-![](images/2023-02-15-18-54-22.png)
+![Logical Diagram Screenshot](images/2023-02-15-18-54-22.png)
 
 7. Conceptual Diagram in Lucid and Napkin
 
 Here is the link of the diagram along with a screenshot below: [Conceptual Diagram](https://lucid.app/lucidchart/b1450513-c409-4cda-930f-91e76050f2f1/edit?viewport_loc=-783%2C-584%2C3700%2C1759%2C0_0&invitationId=inv_01b8ef66-2b65-4842-bf4e-26868dd155d4)
 
-![Lucid](images/2023-02-15-19-01-59.png)
-![Napkin](images/2023-02-15-19-13-04.png)
+![Lucid Diagram](images/2023-02-15-19-01-59.png)
+![Napkin Diagram](images/2023-02-15-19-13-04.png)
 
 ## AWS Security Best Practices Video
 
