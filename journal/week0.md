@@ -89,6 +89,18 @@ Very similar to the billing alert, I created a $10 budget that will notify me if
 
 ![](images/2023-02-14-22-13-01.png)
 
+6. Logical Diagram in Lucid
+
+Here is the link of the diagram along with a screenshot below: [Logical Diagram](https://lucid.app/lucidchart/a95a435a-8f70-40df-89c3-283f63c96fea/edit?viewport_loc=-336%2C-252%2C2994%2C1423%2C0_0&invitationId=inv_60bf124b-1548-4d62-bc7e-4d63f98e3344)
+
+![](images/2023-02-15-18-54-22.png)
+
+7. Conceptual Diagram in Lucid and Napkin
+
+Here is the link of the diagram along with a screenshot below: [Conceptual Diagram](https://lucid.app/lucidchart/b1450513-c409-4cda-930f-91e76050f2f1/edit?viewport_loc=-783%2C-584%2C3700%2C1759%2C0_0&invitationId=inv_01b8ef66-2b65-4842-bf4e-26868dd155d4)
+
+![Lucid](images/2023-02-15-19-01-59.png)
+![Napkin](images/2023-02-15-19-13-04.png)
 
 ## AWS Security Best Practices Video
 
