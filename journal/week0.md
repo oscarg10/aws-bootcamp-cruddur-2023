@@ -106,6 +106,20 @@ Here is the link of the diagram along with a screenshot below: [Conceptual Diagr
 ![Lucid Diagram](images/2023-02-15-19-01-59.png)
 ![Napkin Diagram](images/2023-02-15-19-13-04.png)
 
+## Homework Challenges 
+
+Created a workflow within the AWS Well-Architected tool with the idea to be more familiar with the questions: 
+
+![Well-Architected 1](images/2023-02-15-22-11-24.png)
+
+I noticed that within the tool, on the right hand side, AWS provides helpful resources that may guide you to the appropriate answers for each question: 
+
+![Helful Resources](images/2023-02-15-22-13-09.png)
+
+Additionally, AWS give the option to ask an expert in case we need assistance with any of these questions. There is a button under each section title called "Ask an expert" that will redirect users to a knowledge center where there are FAQs from recent users, experts, and there is also the possibility to start a conversation with an AWS expert: 
+
+![Ask an expert](images/2023-02-15-22-16-07.png)
+![Knowledge Center](images/2023-02-15-22-16-24.png)
 ## AWS Security Best Practices Video
 
 As part of the homework exercise, I wanted to summarize the most important points that Ashish covered during his lecture. First of all, the video was really easy to follow and understand. That said, here is what I got out of it. 
