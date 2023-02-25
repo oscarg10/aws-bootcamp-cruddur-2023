@@ -25,13 +25,21 @@ After I started working with Gitpod, I was able to successfully install Docker a
 
 ![image](https://user-images.githubusercontent.com/56736452/221334923-f0e838a7-6e8b-4c8c-a8a3-a8e7a68ea13e.png)
 
+
 I was able to successfully get data back from the Backend/Notifications page. 
+
 ![image](https://user-images.githubusercontent.com/56736452/221334962-8994abd5-88a7-47ca-bc5f-647b2cf9d7af.png)
 
+Also, I ran the frontend without issues and was able to see the notifications page
+
+![image](https://user-images.githubusercontent.com/56736452/221383840-546fec93-6324-4808-8c6b-9e3d4a537c0c.png)
+
 Testing that Postgres was working
+
 ![image](https://user-images.githubusercontent.com/56736452/221335915-3024f1da-abd4-4a80-9ed8-d3bfce34a46a.png)
 
 Testing that DynamoDB will run locally without issues
+
 ![image](https://user-images.githubusercontent.com/56736452/221337970-8dc68abf-ca61-4d32-afea-848d5ede6f3f.png)
 
 
