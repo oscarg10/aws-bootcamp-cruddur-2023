@@ -8,11 +8,11 @@ Here are some of the highlights from the Live Stream with JessicaÑ
 
 Distributed Tracing - This is for the backend. When a request goes through different systems we can tell a more comprehensive story. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e957837c-0205-4389-8856-6bb642f83489/Untitled.png)
+![image](https://user-images.githubusercontent.com/56736452/222933225-545885e6-cbf3-4982-95dc-85f85d4ec7f3.png))
 
 Every row is called “span.” For each you can see more details about these actions. For example, the highlighted SQL query expands we can even see the query executed. Additionally, these spans can tell you when those actions occurred. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1d519ea-a540-4d58-9d10-33c2b17805a0/Untitled.png)
+![image](https://user-images.githubusercontent.com/56736452/222933238-6cf79dd7-ae33-4a56-8b54-6fc064fe0ea6.png)
 
 By looking at that data, you can determine when this processes can be optimized.
 
@@ -28,17 +28,17 @@ Logging is very time consuming, it carries tons of data with no context for why 
 
 Why Observability? Decreased alert fatigue for security operation teams. It looks at the entire lifecycle of a program. It is basically the ability to collect data about a program execution, internal states of modules, and communication between components. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a3426652-1c48-4ea0-967a-ceaf7b6990d1/Untitled.png)
+![image](https://user-images.githubusercontent.com/56736452/222933243-0591c0ad-1748-42ed-80be-851a7deb8e44.png)
 
 Observability in AWS enables users to gather, correlate, aggregate, and analyze telemetry across their network, infrastructure, and applications in the cloud, hybrid, or on-premises environments. This provides users with valuable insights into the behavior, performance, and health of their systems. 
 
 Observability has 3 pillars: Logs, Traces and Metrics
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/020dd89e-eeec-48b0-a188-0eabf344dd1b/Untitled.png)
+![image](https://user-images.githubusercontent.com/56736452/222933254-4ede247b-c8e0-404f-8b21-3feb6b574637.png)
 
 Instrumentation - is what helps you produce logs, metric or traces. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f01d7d05-bd73-4c21-859d-b9e05136fc2c/Untitled.png)
+![image](https://user-images.githubusercontent.com/56736452/222933259-a64f6394-882b-497b-aee6-a4ada9175b52.png)
 
 Building Security Metrics
 
@@ -51,6 +51,14 @@ Building Security Metrics
     6. AWS services like AWS Distro for OpenTelemetry (ADOT) for metrics and traces 
     7. Dashboard for Practical Attack Vectors only for that application 
     8. Repeat for next app.
+
+#Spend Considerations Video
+
+I watched Chirag's video where he covered free tier infomation about Rollbar, Homeycomb, X-ray and Cloudwatch. 
+
+
+![image](https://user-images.githubusercontent.com/56736452/222933321-2b11a9f9-84c1-470d-840a-164c04765550.png)
+
 
 ##Implementing Honeycomb 
 
