@@ -5,6 +5,7 @@ import os
 import sys
 
 from services.home_activities import *
+from services.notifications_activities import *
 from services.user_activities import *
 from services.create_activity import *
 from services.create_reply import *
