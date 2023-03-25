@@ -12,6 +12,10 @@ tasks:
     command: |
       cd frontend-react-js
       npm i
+  - name: flask
+    command: |
+      cd backend-flask
+      pip install -r requirements.txt
 
   - name: postgres
     init: |
@@ -22,7 +26,7 @@ tasks:
 
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
-      source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
+      source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds/update-sg-rule"
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
