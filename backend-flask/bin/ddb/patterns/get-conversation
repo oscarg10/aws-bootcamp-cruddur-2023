@@ -16,10 +16,10 @@ if len(sys.argv) == 2:
 dynamodb = boto3.client('dynamodb',**attrs)
 table_name = 'cruddur-messages'
 
-message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
+message_group_uuid = "fc6c8353-7b8d-4d14-87a7-4219496d576b"
 
+year = str(datetime.datetime.now().year)
 # define the query parameters
-year = str(datetime.now().year)
 query_params = {
   'TableName': table_name,
   'ScanIndexForward': False,
@@ -28,27 +28,24 @@ query_params = {
   'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
   #'KeyConditionExpression': 'pk = :pk AND sk BETWEEN :start_date AND :end_date',
   'ExpressionAttributeValues': {
-    ':year': {'S': '2023'},
+    ':year': {'S': year },
     #":start_date": { "S": "2023-03-01T00:00:00.000000+00:00" },
     #":end_date": { "S": "2023-03-19T23:59:59.999999+00:00" },
     ':pk': {'S': f"MSG#{message_group_uuid}"}
   }
 }
 
-
 # query the table
 response = dynamodb.query(**query_params)
-
 # print the items returned by the query
 print(json.dumps(response, sort_keys=True, indent=2))
-
 # print the consumed capacity
 print(json.dumps(response['ConsumedCapacity'], sort_keys=True, indent=2))
 
 items = response['Items']
 items.reverse()
 
-for item in items:
+for item in reversed_array:
   sender_handle = item['user_handle']['S']
   message       = item['message']['S']
   timestamp     = item['sk']['S']
