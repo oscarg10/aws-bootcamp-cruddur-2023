@@ -15,6 +15,7 @@ from services.message_groups import *
 from services.messages import *
 from services.create_message import *
 from services.show_activity import *
+
 from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError
 
 # HoneyComb ---------
@@ -52,7 +53,6 @@ from flask import got_request_exception
 
 # HoneyComb ---------
 # Initialize tracing and an exporter that can send data to Honeycomb
-
 provider = TracerProvider()
 processor = BatchSpanProcessor(OTLPSpanExporter())
 provider.add_span_processor(processor)
@@ -82,9 +82,9 @@ cognito_jwt_token = CognitoJwtToken(
 
 # HoneyComb ---------
 # Initialize automatic instrumentation with Flask
-
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
+
 
 frontend = os.getenv('FRONTEND_URL')
 backend = os.getenv('BACKEND_URL')
@@ -118,6 +118,7 @@ def init_rollbar():
         root=os.path.dirname(os.path.realpath(__file__)),
         # flask already sets up logging
         allow_logging_basic_config=False)
+
     # send exceptions from `app` to rollbar, using flask's signal system.
     got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
@@ -252,7 +253,7 @@ def data_search():
 @app.route("/api/activities", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_activities():
-  user_handle  = 'andrewbrown'
+  user_handle  = 'oscargordillo'
   message = request.json['message']
   ttl = request.json['ttl']
   model = CreateActivity.run(message, user_handle, ttl)
@@ -271,7 +272,7 @@ def data_show_activity(activity_uuid):
 @app.route("/api/activities/<string:activity_uuid>/reply", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_activities_reply(activity_uuid):
-  user_handle  = 'andrewbrown'
+  user_handle  = 'oscargordillo'
   message = request.json['message']
   model = CreateReply.run(message, user_handle, activity_uuid)
   if model['errors'] is not None:
