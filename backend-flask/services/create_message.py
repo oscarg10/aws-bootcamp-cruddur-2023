@@ -27,10 +27,11 @@ class CreateMessage:
       model['errors'] = ['message_blank'] 
     elif len(message) > 1024:
       model['errors'] = ['message_exceed_max_chars'] 
+
     if model['errors']:
       # return what we provided
       model['data'] = {
-        'display_name': 'Oscar Gordillo',
+        'display_name': 'Andrew Brown',
         'handle':  user_sender_handle,
         'message': message
       }
@@ -80,3 +81,4 @@ class CreateMessage:
         )
       model['data'] = data
     return model
+    
