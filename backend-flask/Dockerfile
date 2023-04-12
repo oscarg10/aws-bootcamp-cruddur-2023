@@ -1,4 +1,4 @@
-FROM python:3.10-slim-buster
+FROM 960757103945.dkr.ecr.us-east-1.amazonaws.com/cruddur-python:3.10-slim-buster
 
 #Inside Container
 #Make new folder inside container
@@ -20,7 +20,7 @@ COPY . .
 
 #Set environment variables (Env Vars)
 #Inside Container and will remain set when container is running
-ENV FLASK_ENV=development
+ENV FLASK_DEBUG=1
 
 EXPOSE ${PORT}
 
