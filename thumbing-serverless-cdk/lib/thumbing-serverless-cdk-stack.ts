@@ -35,8 +35,8 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     //const bucket = this.importBucket(bucketName);
     const lambda = this.createLambda(folderInput,folderOutput,functionPath,bucketName)
     // This could be redundent since we have s3ReadWritePolicy?
-    bucket.grantRead(lambda);
-    bucket.grantPut(lambda);
+    // bucket.grantRead(lambda);
+    // bucket.grantPut(lambda);
 
     const snsTopic = this.createSnsTopic(topicName)
     this.createSnsSubscription(snsTopic,webhookUrl)
@@ -44,6 +44,12 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     // S3 Event Notifications
     this.createS3NotifyToSns(folderOutput,snsTopic,bucket)
     this.createS3NotifyToLambda(folderInput,lambda,bucket)
+
+    const s3ReadWritePolicy = this.createPolicyBucketAccess(bucket.bucketArn)
+    const snsPublishPolicy = this.createPolicySnSPublish(snsTopic.topicArn)
+
+    lambda.addToRolePolicy(s3ReadWritePolicy);
+    lambda.addToRolePolicy(snsPublishPolicy);
 
   }
 
