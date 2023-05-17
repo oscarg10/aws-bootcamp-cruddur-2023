@@ -33,11 +33,13 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
 
     const bucket = this.createBucket(bucketName)
     //const bucket = this.importBucket(bucketName);
+    //create a lambda
     const lambda = this.createLambda(folderInput,folderOutput,functionPath,bucketName)
     // This could be redundent since we have s3ReadWritePolicy?
     // bucket.grantRead(lambda);
     // bucket.grantPut(lambda);
 
+    //create a topic and subscription
     const snsTopic = this.createSnsTopic(topicName)
     this.createSnsSubscription(snsTopic,webhookUrl)
 
@@ -45,11 +47,12 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     this.createS3NotifyToSns(folderOutput,snsTopic,bucket)
     this.createS3NotifyToLambda(folderInput,lambda,bucket)
 
+
     const s3ReadWritePolicy = this.createPolicyBucketAccess(bucket.bucketArn)
-    const snsPublishPolicy = this.createPolicySnSPublish(snsTopic.topicArn)
+    //const snsPublishPolicy = this.createPolicySnSPublish(snsTopic.topicArn)
 
     lambda.addToRolePolicy(s3ReadWritePolicy);
-    lambda.addToRolePolicy(snsPublishPolicy);
+    //lambda.addToRolePolicy(snsPublishPolicy);
 
   }
 
@@ -103,7 +106,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
   }
 
   createSnsTopic(topicName: string): sns.ITopic{
-    const logicalName = "Topic";
+    const logicalName = "ThumbingTopic";
     const snsTopic = new sns.Topic(this, logicalName, {
       topicName: topicName
     });
@@ -129,7 +132,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     });
     return s3ReadWritePolicy;
   }
-
+  /*
   createPolicySnSPublish(topicArn: string){
     const snsPublishPolicy = new iam.PolicyStatement({
       actions: [
@@ -141,5 +144,5 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     });
     return snsPublishPolicy;
   }
-
+  */
 }
