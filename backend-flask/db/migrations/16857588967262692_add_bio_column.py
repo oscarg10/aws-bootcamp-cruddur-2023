@@ -7,16 +7,16 @@ class AddBioColumnMigration:
     return data
   def rollback_sql():
     data = """
-    ALTER TABLE public.users DROP COLUMN;
+    ALTER TABLE public.users DROP COLUMN bio;
     """
     return data
 
   def migrate():
-    this.query_commit(AddBioColumnMigration.migrate_sql(),{
+    db.query_commit(AddBioColumnMigration.migrate_sql(),{
     })
 
   def rollback():
-    this.query_commit(AddBioColumnMigration.rollback_sql(),{
+    db.query_commit(AddBioColumnMigration.rollback_sql(),{
     })
 
 migration = AddBioColumnMigration
