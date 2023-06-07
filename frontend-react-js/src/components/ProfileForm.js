@@ -1,38 +1,33 @@
-import './ProfileForm.css';
+import './ProfileForms.css';
 import React from "react";
 import process from 'process';
 import {getAccessToken} from 'lib/CheckAuth';
 
 export default function ProfileForm(props) {
-  const [bio, setBio] = React.useState('');
-  const [displayName, setDisplayName] = React.useState('');
-
+  const [bio, setBio] = React.useState(0);
+  const [displayName, setDisplayName] = React.useState(0);
   React.useEffect(()=>{
-    setBio(props.profile.bio || '');
+    console.log('useEffects',props)
+    setBio(props.profile.bio);
     setDisplayName(props.profile.display_name);
   }, [props.profile])
-
-  const s3uploadkey = async (extension)=> {
-    console.log('ext',extension)
+  const s3uploadkey = async (event)=> {
     try {
-      const gateway_url = `${process.env.REACT_APP_API_GATEWAY_ENDPOINT_URL}/avatars/key_upload`
+      console.log('s3upload')
+      const backend_url = "https://8idfm7n11c.execute-api.us-east-1.amazonaws.com//avatars/key_upload"
       await getAccessToken()
       const access_token = localStorage.getItem("access_token")
-      const json = {
-        extension: extension
-      }
-      const res = await fetch(gateway_url, {
+      const res = await fetch(backend_url, {
         method: "POST",
-        body: JSON.stringify(json),
         headers: {
-          'Origin': process.env.REACT_APP_FRONTEND_URL,
+          'Origin': "https://3000-oscarg10-awsbootcampcru-6kva119924v.ws-us98.gitpod.io/",
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        }
-      })
+      }})
       let data = await res.json();
       if (res.status === 200) {
+        console.log('presigned url',data)
         return data.url
       } else {
         console.log(res)
@@ -44,14 +39,14 @@ export default function ProfileForm(props) {
   const s3upload = async (event)=> {
     console.log('event',event)
     const file = event.target.files[0]
+    console.log('file',file)
     const filename = file.name
     const size = file.size
     const type = file.type
     const preview_image_url = URL.createObjectURL(file)
     console.log(filename,size,type)
-    const fileparts = filename.split('.')
-    const extension = fileparts[fileparts.length-1]
-    const presignedurl = await s3uploadkey(extension)
+    const presignedurl = await s3uploadkey()
+    console.log('pp',presignedurl)
     try {
       console.log('s3upload')
       const res = await fetch(presignedurl, {
@@ -60,8 +55,9 @@ export default function ProfileForm(props) {
         headers: {
           'Content-Type': type
       }})
+      let data = await res.json();
       if (res.status === 200) {
-        
+        setPresignedurl(data.url)
       } else {
         console.log(res)
       }
@@ -69,7 +65,6 @@ export default function ProfileForm(props) {
       console.log(err);
     }
   }
-
   const onsubmit = async (event) => {
     event.preventDefault();
     try {
@@ -100,21 +95,17 @@ export default function ProfileForm(props) {
       console.log(err);
     }
   }
-
   const bio_onchange = (event) => {
     setBio(event.target.value);
   }
-
   const display_name_onchange = (event) => {
     setDisplayName(event.target.value);
   }
-
   const close = (event)=> {
     if (event.target.classList.contains("profile_popup")) {
       props.setPopped(false)
     }
   }
-
   if (props.popped === true) {
     return (
       <div className="popup_form_wrap profile_popup" onClick={close}>
@@ -129,7 +120,7 @@ export default function ProfileForm(props) {
             </div>
           </div>
           <div className="popup_content">
-            
+
           <input type="file" name="avatarupload" onChange={s3upload} />
 
             <div className="field display_name">
