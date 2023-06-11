@@ -4,23 +4,29 @@ import process from 'process';
 import {getAccessToken} from 'lib/CheckAuth';
 
 export default function ProfileForm(props) {
-  const [bio, setBio] = React.useState(0);
-  const [displayName, setDisplayName] = React.useState(0);
+  const [bio, setBio] = React.useState('');
+  const [displayName, setDisplayName] = React.useState('');
+
   React.useEffect(()=>{
-    console.log('useEffects',props)
-    setBio(props.profile.bio);
+    setBio(props.profile.bio || '');
     setDisplayName(props.profile.display_name);
   }, [props.profile])
-  const s3uploadkey = async (event)=> {
+
+  const s3uploadkey = async (extension)=> {
+    console.log('ext',extension)
     try {
       console.log('s3upload')
-      const backend_url = "https://8idfm7n11c.execute-api.us-east-1.amazonaws.com//avatars/key_upload"
+      const gateway_url = `${process.env.REACT_APP_API_GATEWAY_ENDPOINT_URL}/avatars/key_upload`
       await getAccessToken()
       const access_token = localStorage.getItem("access_token")
-      const res = await fetch(backend_url, {
+      const json = {
+        extension: extension
+      }
+      const res = await fetch(gateway_url, {
         method: "POST",
+        body: JSON.stringify(json),
         headers: {
-          'Origin': "https://3000-oscarg10-awsbootcampcru-6kva119924v.ws-us98.gitpod.io/",
+          'Origin': process.env.REACT_APP_FRONTEND_URL,
           'Authorization': `Bearer ${access_token}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -45,7 +51,7 @@ export default function ProfileForm(props) {
     const type = file.type
     const preview_image_url = URL.createObjectURL(file)
     console.log(filename,size,type)
-    const presignedurl = await s3uploadkey()
+    const presignedurl = await s3uploadkey(extension)
     console.log('pp',presignedurl)
     try {
       console.log('s3upload')
@@ -55,7 +61,6 @@ export default function ProfileForm(props) {
         headers: {
           'Content-Type': type
       }})
-      let data = await res.json();
       if (res.status === 200) {
         setPresignedurl(data.url)
       } else {
