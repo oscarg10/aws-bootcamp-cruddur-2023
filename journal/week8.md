@@ -12,11 +12,12 @@ cdk deploy
 
 We have to add the env vars into a .env file. To keep in mind - we want to name these vars “{name}.cruddurog-10.com.” The reason being that this is the format required by Cloudformation.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2a1b9a84-b22d-47e5-b9e2-a81e63ebfd9a/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/1cae4ecd-f7b4-4118-8fcb-77ec68d4cca1)
 
  Then we need to create a ‘process-images’ folder to keep our images. Once that is done, we proceeded to establish our env vars. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/debe6442-964a-44f4-aeb8-c427fd3a551e/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/ee849a11-3e27-492f-906d-8c30dc98c6e8)
+
 
 Even after running these commands, we were yet to deploy it because the thumbing path (”process-images”) is still empty. For that, we have to copy the contents from the wee-8-serverless branch. 
 
@@ -40,7 +41,7 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install --arch=x64 --platform=linux --libc=gli
 
 ### Create S3 Event Notification to Lambda
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c7a192df-9745-47c1-a51c-b5b23988ff86/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/91d8917d-f374-4525-9294-a60af286669a)
 
 After adding this code, we need to cdk synth to confirm everything is okay before running cdk deploy 
 
@@ -50,15 +51,15 @@ Create folders within our S3 bucket and add a .jpeg image. Preferably we will do
 
 Also, as a clean up process, we tweaked the fargate command in the gitpod.yml to get rid of the sessions manager plugin file. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/55ac0c5c-46af-410c-aa34-cb3690801b3c/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/f310e714-901f-41e1-b4d7-2cdb588f49e5)
 
 ### Implementation
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b517ce70-cfd5-4b70-9a74-bb20f80389c6/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/d9862004-d177-4e1f-947f-10a745e7bdd8)
 
 After our bucket gets setup, and due to the most recent CDK deployment, we are able to see the image that got uploaded to the “original” folder, and then got processed and save into the “processed” folder with the right format. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a62b0ec4-522e-4a9c-9735-5a54c1a939a8/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/4a58f533-89fa-4200-9e2a-42744ed4035d)
 
 After we were able to see the image being correctly processed to the correct folder, we then created an SNS Topic, Subscription and Event Notification using the code snippets below: 
 
@@ -160,7 +161,7 @@ SELECT
       (
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/39dbe5a6-852f-4a1b-a007-4fe897481e35/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/e397ee3c-bc2a-4302-8790-64f655eced41)
 
 Then, we move on to working with API gateway so we can upload images to our S3 bucket. During this process, we generate the code for the lambda that will get triggered by clients. The idea is to generate a pre-signed url that will get used to upload the image. For this implementation, we created the following function using Ruby: 
 
@@ -217,7 +218,8 @@ end # def handler
 
 We execute this function locally, and it generates a presigned url that we tested through Tunder Client. Tunder is a lightweight Rest API Client extension that we can use through gitpod. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a98d73c2-600f-4f43-a949-3db6f7dc9301/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/d0d42936-b00d-4d56-8558-26c737d6927c)
+
 
 Then, we move onto creating an authorization Lambda using the following code: 
 
@@ -259,14 +261,15 @@ In addition to the snipped above, we also installed aws-jwt-verify which then ge
 Once these two Lambdas are created, we went back to API Gateway for the integration. In here, we integrated the CruddurAvatarUpload as well as the CruddurApiAuthorizer Lambdas to API gateway. 
 
  
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/e75c59cf-33b0-4d5b-a7eb-6ee7c0bd14a9)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/452a91cb-876c-40b3-8f53-43494dad8dbb/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/a3cb5843-75b3-4e98-a9b2-9e53ecd45065)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e77c0884-209f-4207-af85-8c0c106edfd9/Untitled.png)
 
 Once these two are running smoothly, we should be able to see a profile like the one below. Personally, I’m still dealing with a bug that I’m hoping to revisit as much as possible to get it fixed. I’m having issues with the Lambda that uploads the images to our S3 bucket. I’ll explain my issue below, but for now this is the end of week 8. 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d5f6df8c-b26a-440f-99ee-98617e699914/Untitled.png)
+![image](https://github.com/oscarg10/aws-bootcamp-cruddur-2023/assets/56736452/4352bff5-6b4c-4861-b379-47fffd298e23)
+
 
 ### Troubleshooting
 
