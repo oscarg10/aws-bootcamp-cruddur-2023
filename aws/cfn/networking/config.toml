@@ -1,0 +1,4 @@
+[deploy]
+bucket = 'cfn-artifacts-cruddurog10'
+region = 'us-east-1'
+stack_name = 'CrdNet'
